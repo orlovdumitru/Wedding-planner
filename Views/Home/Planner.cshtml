@@ -1,0 +1,34 @@
+﻿
+@model Wedd
+ <h3>Plan Your Wedding</h3>
+        <p style="margin-left:70%; margin-top: -40px;">
+            <a asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+            &nbsp; | &nbsp;
+            <a asp-area="" asp-controller="Home" asp-action="LogOut">Log Out</a>
+        </p>
+<br>
+    <form asp-action="NewWedding" asp-controller="Home" method="POST" style="border:1px solid #ccc">
+    <div class="container" style="padding:20px;">
+
+        <label asp-for="wedderOne"><b>Wedder One:</b></label>
+        <input asp-for="wedderOne" type="text" placeholder="Wedder One" required>
+        <span asp-validation-for="wedderOne"></span><br>
+
+        <label asp-for="wedderTwo"><b>Wedder One:</b></label>
+        <input asp-for="wedderTwo" type="text" placeholder="Wedder Two" required>
+        <span asp-validation-for="wedderTwo"></span><br>
+
+        <label asp-for="created_at"><b>Date:</b></label>
+        <input asp-for="created_at" type="date" required>
+        <span asp-validation-for="created_at"></span>
+        <br>
+
+        <label asp-for="address"><b>Wedding Address:</b></label>
+        <input asp-for="address" type="text" placeholder="Enter address" required>
+        <span asp-validation-for="address"></span>
+
+        <div class="clearfix">
+        <button type="submit" class="signupbtn">Create</button>
+        </div>
+    </div>
+    </form>

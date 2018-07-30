@@ -1,0 +1,53 @@
+
+@model Wedd
+<h3>Welcome to the Wedding Planner</h3>
+<p style="margin-left:75%; margin-top: -35px; font-size:13pt;">
+    <a asp-area="" asp-controller="Home" asp-action="LogOut">Log Out</a>
+</p>
+<hr>
+<br>
+
+<table style="width:70%">
+  <tr>
+    <th>Wedding</th>
+    <th>Date</th> 
+    <th>Guests</th>
+    <th>Action</th>
+  </tr>
+@foreach(var wedding in @ViewBag.weddings){
+   <tr>
+    <td><a asp-area="" asp-controller="Home" asp-action="Details" asp-route-id="@wedding.id">@wedding.wedderOne & @wedding.wedderTwo</a></td>
+
+    <td>@wedding.created_at</td> 
+
+    <td>@wedding.wedPlan.Count</td>
+    
+    @if(@ViewBag.currentUser == @wedding.user){
+      <td><a asp-area="" asp-controller="Home" asp-action="Delete" asp-route-id="@wedding.id">Delete</a></td>
+    }
+    else{
+      bool exists = false;
+      int wedPlanId = 0;
+      @foreach(var connection in @ViewBag.allConnections){
+      // check if user is a guest to a wedding and if current wedding has current user
+        @if(@connection.user == @ViewBag.currentUser && @connection.wedding == wedding){
+          exists = true;
+          wedPlanId = connection.id; 
+          break;
+        }
+      }
+      @if(exists){
+      <td><a asp-area="" asp-controller="Home" asp-action="UnRsvp" asp-route-id="@wedPlanId">Un-RSVP</a></td>
+      }
+      else{
+      <td><a asp-area="" asp-controller="Home" asp-action="Rsvp" asp-route-id="@wedding.id">RSVP</a></td>
+      }
+    }
+    
+  </tr>
+
+}
+ </table>
+
+<br>
+<a asp-area="" asp-controller="Home" asp-action="Planner"><button style="margin-left:60%;">New Wedding</button></a>

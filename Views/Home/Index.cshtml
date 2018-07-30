@@ -1,0 +1,57 @@
+﻿
+<div class="regLog">
+
+    @model Users
+    <h3>Register</h3>
+
+    <form asp-action="Create" asp-controller="Home" method="POST" style="border:1px solid #ccc">
+    <div class="container" style="padding:20px;">
+
+        <label asp-for="first_name"><b>First name:</b></label>
+        <input asp-for="first_name" type="text" placeholder="First name" required>
+        <span asp-validation-for="first_name"></span><br>
+
+        <label asp-for="last_name"><b>Last name:</b></label>
+        <input asp-for="last_name" type="text" placeholder="Last name" required>
+        <span asp-validation-for="last_name"></span><br>
+
+        <label asp-for="email"><b>Email:</b></label>
+        <input asp-for="email" type="email" placeholder="Enter Email" required>
+        <span asp-validation-for="email"></span><br>
+
+        <label asp-for="password"><b>Password:</b></label>
+        <input asp-for="password" type="password" placeholder="Enter Password" required>
+        <span asp-validation-for="password"></span><br>
+
+        <label for="password"><b>Repeat Password:</b></label>
+        <input type="password" placeholder="Repeat Password" name="password" required>
+
+        <div class="clearfix">
+        <button type="submit" class="signupbtn">Register</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+
+<div class="regLog">
+
+    <h3>Login</h3>
+    <form asp-action="LoginMethod" asp-controller="Home" method="POST" style="border:1px solid #ccc">
+    <div class="container" style="padding:20px;">
+
+        <label asp-for="email"><b>Email:</b></label>
+        <input asp-for="email" type="email" placeholder="Enter Email" required>
+        <span asp-validation-for="email"></span><br>
+
+        <label asp-for="password"><b>Password:</b></label>
+        <input asp-for="password" type="password" placeholder="Enter Password" required>
+        <span asp-validation-for="password"></span>
+
+        <div class="clearfix">
+        <button type="submit" class="signupbtn">Log In</button>
+        </div>
+    </div>
+    </form>
+    <!-- @ViewBag.miss <a asp-area="" asp-controller="Home" asp-action="Register">@ViewBag.reg</a> -->
+</div>
